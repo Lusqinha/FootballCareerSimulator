@@ -106,7 +106,7 @@ class SoccerPLayer:
     # This method will be used to update the player's Transfer History. Provide the team, year and salary in millions per year.
     def registerTransference(self, team:str, year:int, salary:int):
         if self.total_transfers == 0:
-            print(f"{COLORS['yellow']}[INFO]{COLORS['clear']} {COLORS['green']}{self.name}{COLORS['clear']} has been seen by a scout of {COLORS['red']}{team}{COLORS['clear']}, now he is part of the team and a shining future awaits him.")
+            print(f"{COLORS['blue']}[REVEAL]{COLORS['clear']} {COLORS['green']}{self.name}{COLORS['clear']} has been seen by a scout of {COLORS['red']}{team}{COLORS['clear']}, now he is part of the team and a shining future awaits him.")
         self.transfer_history.append({
             "team": team,
             "year": year,
@@ -115,7 +115,7 @@ class SoccerPLayer:
         self.total_transfers += 1
         self.age += self.transfer_step
         self.total_salary += salary*self.transfer_step
-        print(f'{COLORS["yellow"]}[INFO]{COLORS["clear"]} {COLORS["green"]}{self.name}{COLORS["clear"]} has been transferred to {COLORS["red"]}{team}{COLORS["clear"]} in {COLORS["red"]}{year}{COLORS["clear"]} for {COLORS["red"]}{salary}M{COLORS["clear"]} per year. Good luck!')
+        print(f'{COLORS["blue"]}[TRANSFER]{COLORS["clear"]} {COLORS["green"]}{self.name}{COLORS["clear"]} has been transferred to {COLORS["red"]}{team}{COLORS["clear"]} at {COLORS["red"]}{year}{COLORS["clear"]} for {COLORS["red"]}{salary}M{COLORS["clear"]} per year. Good luck!')
         # Print total salary
         print(f'{COLORS["yellow"]}[INFO]{COLORS["clear"]} The current balance is {COLORS["red"]}€{self.total_salary}M{COLORS["clear"]}.')
     
@@ -131,9 +131,9 @@ class SoccerPLayer:
         self.total_transfers += 1
         self.age += self.transfer_step
         self.total_salary += salary*self.transfer_step
-        print(f'{COLORS["yellow"]}[INFO]{COLORS["clear"]} {COLORS["green"]}{self.name}{COLORS["clear"]} has renewed his contract with {COLORS["red"]}{self.transfer_history[-1]["team"]}{COLORS["clear"]} in {COLORS["red"]}{self.transfer_history[-1]["year"]}{COLORS["clear"]} for {COLORS["red"]}{salary}M{COLORS["clear"]} per year. You are a loyal player!')
+        print(f'{COLORS["blue"]}[RENEW]{COLORS["clear"]} {COLORS["green"]}{self.name}{COLORS["clear"]} has renewed his contract with {COLORS["red"]}{self.transfer_history[-1]["team"]}{COLORS["clear"]} at {COLORS["red"]}{self.transfer_history[-1]["year"]}{COLORS["clear"]} for {COLORS["red"]}{salary}M{COLORS["clear"]} per year. You are a loyal player!')
         # Print total salary
-        print(f'{COLORS["yellow"]}[INFO]{COLORS["clear"]} {COLORS["green"]}{self.name}{COLORS["clear"]} has earned {COLORS["red"]}{self.total_salary}M{COLORS["clear"]} in his career.')
+        print(f'{COLORS["yellow"]}[INFO]{COLORS["clear"]} The current balance is {COLORS["red"]}€{self.total_salary}M{COLORS["clear"]}.')
     # Return the player's transfer history
     def getTransferHistory(self):
         return self.transfer_history
@@ -311,24 +311,26 @@ class CareerSimulator:
             opt:str = "" 
                
             if renewal_offer:
-                print(f'{COLORS["yellow"]}[INFO]{COLORS["clear"]} {COLORS["green"]}{self.player.name}{COLORS["clear"]} has been offered a contract by {COLORS["red"]}{team}{COLORS["clear"]} in {COLORS["red"]}{year}{COLORS["clear"]} for {COLORS["red"]}{salary}M{COLORS["clear"]} per year. But, the manager of {COLORS["red"]}{self.player.transfer_history[-1]["team"]}{COLORS["clear"]} has offered a renewal of {COLORS["red"]}{renewal_salary}M{COLORS["clear"]} per year. If you want to renew the contract, type {COLORS["red"]}n{COLORS["clear"]}, if you want to accept the offer, type {COLORS["red"]}y{COLORS["clear"]}.')
+                print(f'{COLORS["red"]}[OFFER]{COLORS["clear"]} {COLORS["green"]}{self.player.name}{COLORS["clear"]} has been offered a contract by {COLORS["red"]}{team}{COLORS["clear"]} at {COLORS["red"]}{year}{COLORS["clear"]} for {COLORS["red"]}{salary}M{COLORS["clear"]} per year. But, the manager of {COLORS["red"]}{self.player.transfer_history[-1]["team"]}{COLORS["clear"]} has offered a renewal of {COLORS["red"]}{renewal_salary}M{COLORS["clear"]} per year. If you want to renew the contract, type {COLORS["red"]}n{COLORS["clear"]}, if you want to accept the offer, type {COLORS["red"]}y{COLORS["clear"]}.')
                 opt = str(input(">>> ")).lower()
                 if opt == "n":
-                    print(f"{COLORS['yellow']}[INFO]{COLORS['clear']} {COLORS['green']}{self.player.name}{COLORS['clear']} has renewed his contract with {COLORS['red']}{self.player.transfer_history[-1]['team']}{COLORS['clear']} in {COLORS['red']}{self.player.transfer_history[-1]['year']}{COLORS['clear']} for {COLORS['red']}{renewal_salary}M{COLORS['clear']} per year.")
+                    print(f"{COLORS['yellow']}[INFO]{COLORS['clear']} {COLORS['green']}{self.player.name}{COLORS['clear']} has renewed his contract with {COLORS['red']}{self.player.transfer_history[-1]['team']}{COLORS['clear']} for {COLORS['red']}{renewal_salary}M{COLORS['clear']} per year.")
                     
                     self.player.registerRenewal(renewal_salary)
                 elif opt == "y":
-                    print(f"{COLORS['yellow']}[INFO]{COLORS['clear']} {COLORS['green']}{self.player.name}{COLORS['clear']} has accepted the offer with {COLORS['red']}{team}{COLORS['clear']} in {COLORS['red']}{year}{COLORS['clear']} for {COLORS['red']}{salary}M{COLORS['clear']} per year.")
+                    print(f"{COLORS['yellow']}[INFO]{COLORS['clear']} {COLORS['green']}{self.player.name}{COLORS['clear']} has accepted the offer with {COLORS['red']}{team}{COLORS['clear']} for {COLORS['red']}{salary}M{COLORS['clear']} per year.")
                     self.player.registerTransference(team, year, salary)
                 else:
                     print(f"{COLORS['yellow']}[INFO]{COLORS['clear']} {COLORS['green']}{self.player.name}{COLORS['clear']} don't answer the offer, so the offer has been rejected. The contract has been renewed.")
                     self.player.registerRenewal(renewal_salary)
             else:
-                print(f'{COLORS["yellow"]}[INFO]{COLORS["clear"]} {COLORS["green"]}{self.player.name}{COLORS["clear"]} has been offered a contract by {COLORS["red"]}{team}{COLORS["clear"]} in {COLORS["red"]}{year}{COLORS["clear"]} for {COLORS["red"]}{salary}M{COLORS["clear"]} per year. If you want to accept the offer, type {COLORS["red"]}y{COLORS["clear"]}, if you want to reject the offer, type {COLORS["red"]}n{COLORS["clear"]}.')
+                print(f'{COLORS["red"]}[OFFER]{COLORS["clear"]} {COLORS["green"]}{self.player.name}{COLORS["clear"]} has been offered a contract by {COLORS["red"]}{team}{COLORS["clear"]} at {COLORS["red"]}{year}{COLORS["clear"]} for {COLORS["red"]}{salary}M{COLORS["clear"]} per year. If you want to accept the offer, type {COLORS["red"]}y{COLORS["clear"]}, if you want to reject the offer, type {COLORS["red"]}n{COLORS["clear"]}.')
                 opt = str(input(">>> ")).lower()
                 
                 if opt == "y":
+                    print(f"{COLORS['yellow']}[INFO]{COLORS['clear']} {COLORS['green']}{self.player.name}{COLORS['clear']} has accepted the offer with {COLORS['red']}{team}{COLORS['clear']} for {COLORS['red']}{salary}M{COLORS['clear']} per year.")
                     self.player.registerTransference(team, year, salary)
+
                 elif opt == "n":
                     print(f"{COLORS['yellow']}[INFO]{COLORS['clear']} {COLORS['green']}{self.player.name}{COLORS['clear']} has rejected the offer.")
                     # Renew the contract
