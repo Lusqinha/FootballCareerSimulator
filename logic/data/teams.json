@@ -2,121 +2,201 @@
     {
         "team_name": "Arsenal FC",
         "common_name": "Arsenal",
-        "season": "2018/2019",
         "country": "England"
     },
     {
         "team_name": "Tottenham Hotspur FC",
         "common_name": "Tottenham Hotspur",
-        "season": "2018/2019",
         "country": "England"
     },
     {
         "team_name": "Manchester City FC",
         "common_name": "Manchester City",
-        "season": "2018/2019",
         "country": "England"
     },
     {
         "team_name": "Leicester City FC",
         "common_name": "Leicester City",
-        "season": "2018/2019",
         "country": "England"
     },
     {
         "team_name": "Crystal Palace FC",
         "common_name": "Crystal Palace",
-        "season": "2018/2019",
         "country": "England"
     },
     {
         "team_name": "Everton FC",
         "common_name": "Everton",
-        "season": "2018/2019",
         "country": "England"
     },
     {
         "team_name": "Burnley FC",
         "common_name": "Burnley",
-        "season": "2018/2019",
         "country": "England"
     },
     {
         "team_name": "Southampton FC",
         "common_name": "Southampton",
-        "season": "2018/2019",
         "country": "England"
     },
     {
         "team_name": "AFC Bournemouth",
         "common_name": "AFC Bournemouth",
-        "season": "2018/2019",
         "country": "England"
     },
     {
         "team_name": "Manchester United FC",
         "common_name": "Manchester United",
-        "season": "2018/2019",
         "country": "England"
     },
     {
         "team_name": "Liverpool FC",
         "common_name": "Liverpool",
-        "season": "2018/2019",
         "country": "England"
     },
     {
         "team_name": "Chelsea FC",
         "common_name": "Chelsea",
-        "season": "2018/2019",
         "country": "England"
     },
     {
         "team_name": "West Ham United FC",
         "common_name": "West Ham United",
-        "season": "2018/2019",
         "country": "England"
     },
     {
         "team_name": "Watford FC",
         "common_name": "Watford",
-        "season": "2018/2019",
         "country": "England"
     },
     {
         "team_name": "Newcastle United FC",
         "common_name": "Newcastle United",
-        "season": "2018/2019",
         "country": "England"
     },
     {
         "team_name": "Cardiff City FC",
         "common_name": "Cardiff City",
-        "season": "2018/2019",
         "country": "Wales"
     },
     {
         "team_name": "Fulham FC",
         "common_name": "Fulham",
-        "season": "2018/2019",
         "country": "England"
     },
     {
         "team_name": "Brighton & Hove Albion FC",
         "common_name": "Brighton & Hove Albion",
-        "season": "2018/2019",
         "country": "England"
     },
     {
         "team_name": "Huddersfield Town FC",
         "common_name": "Huddersfield Town",
-        "season": "2018/2019",
         "country": "England"
     },
     {
         "team_name": "Wolverhampton Wanderers FC",
         "common_name": "Wolverhampton Wanderers",
-        "season": "2018/2019",
         "country": "England"
+    },
+    {
+        "team_name": "América Futebol Clube",
+        "common_name": "América-MG",
+        "country": "Brazil"
+    },
+    {
+        "team_name": "Club Athletico Paranaense",
+        "common_name": "Athletico",
+        "country": "Brazil"
+    },
+    {
+        "team_name": "Atlético Clube Goianiense",
+        "common_name": "Atlético-GO",
+        "country": "Brazil"
+    },
+    {
+        "team_name": "Clube Atlético Mineiro",
+        "common_name": "Atlético-MG",
+        "country": "Brazil"
+    },
+    {
+        "team_name": "Avaí Futebol Clube",
+        "common_name": "Avaí",
+        "country": "Brazil"
+    },
+    {
+        "team_name": "Botafogo de Futebol e Regatas",
+        "common_name": "Botafogo",
+        "country": "Brazil"
+    },
+    {
+        "team_name": "Red Bull Bragantino",
+        "common_name": "Bragantino",
+        "country": "Brazil"
+    },
+    {
+        "team_name": "Ceará Sporting Club",
+        "common_name": "Ceará",
+        "country": "Brazil"
+    },
+    {
+        "team_name": "Sport Club Corinthians Paulista",
+        "common_name": "Corinthians",
+        "country": "Brazil"
+    },
+    {
+        "team_name": "Coritiba Foot Ball Club",
+        "common_name": "Coritiba",
+        "country": "Brazil"
+    },
+    {
+        "team_name": "Cuiabá Esporte Clube",
+        "common_name": "Cuiabá",
+        "country": "Brazil"
+    },
+    {
+        "team_name": "Clube de Regatas do Flamengo",
+        "common_name": "Flamengo",
+        "country": "Brazil"
+    },
+    {
+        "team_name": "Fluminense Football Club",
+        "common_name": "Fluminense",
+        "country": "Brazil"
+    },
+    {
+        "team_name": "Fortaleza Esporte Clube",
+        "common_name": "Fortaleza",
+        "country": "Brazil"
+    },
+    {
+        "team_name": "Goiás Esporte Clube",
+        "common_name": "Goiás",
+        "country": "Brazil"
+    },
+    {
+        "team_name": "Esporte Clube Juventude",
+        "common_name": "Juventude",
+        "country": "Brazil"
+    },
+    {
+        "team_name": "Sport Club Internacional",
+        "common_name": "Internacional",
+        "country": "Brazil"
+    },
+    {
+        "team_name": "Sociedade Esportiva Palmeiras",
+        "common_name": "Palmeiras",
+        "country": "Brazil"
+    },
+    {
+        "team_name": "Santos Futebol Clube",
+        "common_name": "Santos",
+        "country": "Brazil"
+    },
+    {
+        "team_name": "São Paulo Futebol Clube",
+        "common_name": "São Paulo",
+        "country": "Brazil"
     }
 ]
