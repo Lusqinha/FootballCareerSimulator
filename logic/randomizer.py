@@ -9,8 +9,9 @@ class RandomSupplies:
         self.json_length = len(self.teams_json)
         
     def randomTeam(self):
-        team = self.teams_json[randint(0, self.json_length - 1)]["team_name"]
-        return team
+        random_index:int = randint(0, self.json_length - 1)
+        team = self.teams_json[random_index]["team_name"]
+        return team, random_index
     
     def generateRenewOffer(self, prev_salary:int, prime:bool=False):
         if prime: # if in prime, increase salary with some percentage between 20% and 60%
@@ -36,7 +37,7 @@ class RandomSupplies:
                 return offer
         else:
             if renew: 
-                renew_offer = self.generateRenewOffer(prev_salary, prime)
+                renew_offer = self.generateRenewOffer(round(prev_salary/3), prime)
                 
                 return renew_offer
             
@@ -50,5 +51,5 @@ class RandomSupplies:
 
 
 if __name__ == "__main__":
-    r = RandomSupplies("logic/data/teams.json")
+    r = RandomSupplies("logic/data/teams.json") # type: ignore
     print(r.randomTeam())

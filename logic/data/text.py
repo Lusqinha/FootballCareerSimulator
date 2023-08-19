@@ -43,9 +43,9 @@ class LangENUS:
         return f'{self.COLORS["blue"]}[RENEW]{self.COLORS["clear"]} {self.COLORS["green"]}{player_name}{self.COLORS["clear"]} has renewed his contract with {self.COLORS["red"]}{previous_team}{self.COLORS["clear"]} at {self.COLORS["red"]}{year}{self.COLORS["clear"]} for {self.COLORS["red"]}{salary} M{self.COLORS["clear"]} per year. You are a loyal player!'
         
     # Simulate transfers text's
-    def renewOffer(self, player_name:str, team:str, year:int, offer_salary:int, previous_team:str, renewal_salary:int):
+    def renewOffer(self, player_name:str, team:str, year:int, offer_salary:int, previous_team:str, renewal_salary:int, country:str):
         
-        text_offer = f'{self.COLORS["red"]}[OFFER]{self.COLORS["clear"]} {self.COLORS["green"]}{player_name}{self.COLORS["clear"]} has been offered a contract by {self.COLORS["red"]}{team}{self.COLORS["clear"]} for the year {self.COLORS["red"]}{year}{self.COLORS["clear"]} at an annual salary of {self.COLORS["red"]}${offer_salary}M{self.COLORS["clear"]}. However, the manager of {self.COLORS["red"]}{previous_team}{self.COLORS["clear"]} has extended a renewal offer of {self.COLORS["red"]}${renewal_salary}M{self.COLORS["clear"]} per year. To renew the contract, type {self.COLORS["red"]}n{self.COLORS["clear"]}. To accept the offer, type {self.COLORS["red"]}y{self.COLORS["clear"]}.'
+        text_offer = f'{self.COLORS["red"]}[OFFER]{self.COLORS["clear"]} {self.COLORS["green"]}{player_name}{self.COLORS["clear"]} has been offered a contract by {self.COLORS["red"]}{team} ({country}){self.COLORS["clear"]} for the year {self.COLORS["red"]}{year}{self.COLORS["clear"]} at an annual salary of {self.COLORS["red"]}${offer_salary}M{self.COLORS["clear"]}. However, the manager of {self.COLORS["red"]}{previous_team}{self.COLORS["clear"]} has extended a renewal offer of {self.COLORS["red"]}${renewal_salary}M{self.COLORS["clear"]} per year. To renew the contract, type {self.COLORS["red"]}n{self.COLORS["clear"]}. To accept the offer, type {self.COLORS["red"]}y{self.COLORS["clear"]}.'
             
         return text_offer
 
@@ -66,8 +66,8 @@ class LangENUS:
         
         return output
 
-    def simpleOffer(self, player_name:str, team:str, offer_salary:int):
-        text_offer = f'{self.COLORS["red"]}[OFFER]{self.COLORS["clear"]} {self.COLORS["green"]}{player_name}{self.COLORS["clear"]} has been offered a contract by {self.COLORS["red"]}{team}{self.COLORS["clear"]} for {self.COLORS["red"]}${offer_salary}M{self.COLORS["clear"]} per year. To accept the offer, type {self.COLORS["red"]}y{self.COLORS["clear"]}; to reject the offer, type {self.COLORS["red"]}n{self.COLORS["clear"]}.'
+    def simpleOffer(self, player_name:str, team:str, offer_salary:int, country:str):
+        text_offer = f'{self.COLORS["red"]}[OFFER]{self.COLORS["clear"]} {self.COLORS["green"]}{player_name}{self.COLORS["clear"]} has been offered a contract by {self.COLORS["red"]}{team} ({country}){self.COLORS["clear"]} for {self.COLORS["red"]}${offer_salary}M{self.COLORS["clear"]} per year. To accept the offer, type {self.COLORS["red"]}y{self.COLORS["clear"]}; to reject the offer, type {self.COLORS["red"]}n{self.COLORS["clear"]}.'
 
         return text_offer
         
@@ -127,8 +127,8 @@ class LangPTBR:
         return f'{self.COLORS["blue"]}[RENOVAÇÃO]{self.COLORS["clear"]} {self.COLORS["green"]}{player_name}{self.COLORS["clear"]} renovou seu contrato com {self.COLORS["red"]}{previous_team}{self.COLORS["clear"]} em {self.COLORS["red"]}{year}{self.COLORS["clear"]} por {self.COLORS["red"]}R${salary}M{self.COLORS["clear"]}/ano. Lealdade é raro hoje em dia!'
 
     # Simular textos de transferências
-    def renewOffer(self, player_name: str, team: str, year: int, offer_salary: int, previous_team: str, renewal_salary: int):
-        text_offer = f'{self.COLORS["red"]}[OFERTA]{self.COLORS["clear"]} {self.COLORS["green"]}{player_name}{self.COLORS["clear"]} recebeu uma oferta de contrato do {self.COLORS["red"]}{team}{self.COLORS["clear"]} aos {self.COLORS["red"]}{year}{self.COLORS["clear"]} anos com um salário anual de {self.COLORS["red"]}R${offer_salary}M{self.COLORS["clear"]}. No entanto, o técnico do {self.COLORS["red"]}{previous_team}{self.COLORS["clear"]} fez uma oferta de renovação de {self.COLORS["red"]}R${renewal_salary}M{self.COLORS["clear"]}/ano. Para renovar o contrato, digite {self.COLORS["red"]}n{self.COLORS["clear"]}. Para aceitar a oferta, digite {self.COLORS["red"]}y{self.COLORS["clear"]}.'
+    def renewOffer(self, player_name: str, team: str, year: int, offer_salary: int, previous_team: str, renewal_salary:int, country:str):
+        text_offer = f'{self.COLORS["red"]}[OFERTA]{self.COLORS["clear"]} {self.COLORS["green"]}{player_name}{self.COLORS["clear"]} recebeu uma oferta de contrato do {self.COLORS["red"]}{team} ({country}){self.COLORS["clear"]} aos {self.COLORS["red"]}{year}{self.COLORS["clear"]} anos com um salário anual de {self.COLORS["red"]}R${offer_salary}M{self.COLORS["clear"]}. No entanto, o técnico do {self.COLORS["red"]}{previous_team}{self.COLORS["clear"]} fez uma oferta de renovação de {self.COLORS["red"]}R${renewal_salary}M{self.COLORS["clear"]}/ano. Para renovar o contrato, digite {self.COLORS["red"]}n{self.COLORS["clear"]}. Para aceitar a oferta, digite {self.COLORS["red"]}y{self.COLORS["clear"]}.'
         return text_offer
 
     def renewOfferOpt(self, player_name: str, opt: str):
@@ -148,8 +148,8 @@ class LangPTBR:
 
         return output
 
-    def simpleOffer(self, player_name: str, team: str, offer_salary: int):
-        text_offer = f'{self.COLORS["red"]}[OFERTA]{self.COLORS["clear"]} {self.COLORS["green"]}{player_name}{self.COLORS["clear"]} recebeu uma oferta de contrato do {self.COLORS["red"]}{team}{self.COLORS["clear"]} por {self.COLORS["red"]}R${offer_salary}M{self.COLORS["clear"]}/ano. Para aceitar a oferta, digite {self.COLORS["red"]}y{self.COLORS["clear"]}; para rejeitar a oferta, digite {self.COLORS["red"]}n{self.COLORS["clear"]}.'
+    def simpleOffer(self, player_name: str, team: str, year: int, offer_salary: int, country: str):
+        text_offer = f'{self.COLORS["red"]}[OFERTA]{self.COLORS["clear"]} {self.COLORS["green"]}{player_name}{self.COLORS["clear"]} recebeu uma oferta de contrato do {self.COLORS["red"]}{team} ({country}){self.COLORS["clear"]} aos {self.COLORS["red"]}{year}{self.COLORS["clear"]} anos por {self.COLORS["red"]}R${offer_salary}M{self.COLORS["clear"]}/ano. Para aceitar a oferta, digite {self.COLORS["red"]}y{self.COLORS["clear"]}; para rejeitar a oferta, digite {self.COLORS["red"]}n{self.COLORS["clear"]}.'
         return text_offer
 
     def simpleOfferOpt(self, player_name: str, opt: str):

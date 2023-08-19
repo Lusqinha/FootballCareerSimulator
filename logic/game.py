@@ -297,7 +297,7 @@ class CareerSimulator:
         prime:bool = True if self.player.age >= 25 and self.player.age <= 32 else False
         
         # Randomize a team
-        team:str = rs.randomTeam()
+        team, team_index = rs.randomTeam()
         
         offer_salary:int
         
@@ -320,7 +320,7 @@ class CareerSimulator:
             if renewal_offer:
                 renewal_salary = rs.randomSalary(prime, prev_salary, renew=True, offer_value=offer_salary)
     
-                print(self.lang.renewOffer(self.player.name, team, year, offer_salary, self.player.transfer_history[-1]["team"], renewal_salary))
+                print(self.lang.renewOffer(self.player.name, team, year, offer_salary, self.player.transfer_history[-1]["team"], renewal_salary, TEAMS[team_index]["country"])) # type: ignore
                 opt = str(input(">>> ")).lower()
                 if opt == "n":
                     print(self.lang.renewOfferOpt(self.player.name, opt="n"))
@@ -333,7 +333,8 @@ class CareerSimulator:
                     print(self.lang.renewOfferOpt(self.player.name, opt=opt))
                     self.player.registerRenewal(renewal_salary)
             else:
-                print(self.lang.simpleOffer(self.player.name, team, offer_salary))
+                print(year)
+                print(self.lang.simpleOffer(self.player.name, team, year, offer_salary, TEAMS[team_index]["country"]))  # type: ignore
                 opt = str(input(">>> ")).lower()
                 
                 if opt == "y":
