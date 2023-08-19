@@ -1,6 +1,7 @@
 from random import randint
 import json
 from logic.randomizer import RandomSupplies
+from logic.data.text import LangENUS, LangPTBR
 
 # Exceptions
 
@@ -75,10 +76,13 @@ MAX_AGES = {
         }]
 """
 class SoccerPLayer:
-    def __init__(self, name:str, number:str, position:str, nationality:str, transfer_step=2):
+    def __init__(self, lang:LangENUS|LangPTBR, name:str, number:int, position:str, nationality:str, transfer_step=2):
+        self.lang:LangENUS|LangPTBR = lang
+        
+        
         # Basic attributes
         self.name:str = name
-        self.number:str = number
+        self.number:int = number
         self.position:str = position
         self.nationality:str = nationality
         self.age:int = 18
@@ -107,7 +111,7 @@ class SoccerPLayer:
     # This method will be used to update the player's Transfer History. Provide the team, year and salary in millions per year.
     def registerTransference(self, team:str, year:int, salary:int):
         if self.total_transfers == 0:
-            print(f"{COLORS['blue']}[REVEAL]{COLORS['clear']} {COLORS['green']}{self.name}{COLORS['clear']} has been seen by a scout of {COLORS['red']}{team}{COLORS['clear']}, now he is part of the team and a shining future awaits him.")
+            print(self.lang.firstTransfer(self.name, team))
         self.transfer_history.append({
             "team": team,
             "year": year,
@@ -116,10 +120,10 @@ class SoccerPLayer:
         self.total_transfers += 1
         self.age += self.transfer_step
         self.total_salary += salary*self.transfer_step
-        print(f'{COLORS["blue"]}[TRANSFER]{COLORS["clear"]} {COLORS["green"]}{self.name}{COLORS["clear"]} has been transferred to {COLORS["red"]}{team}{COLORS["clear"]} at {COLORS["red"]}{year}{COLORS["clear"]} for {COLORS["red"]}{salary}M{COLORS["clear"]} per year. Good luck!')
+        print(self.lang.registerTransfer(self.name, team, year, salary))
         # Print total salary
-        print(f'{COLORS["yellow"]}[INFO]{COLORS["clear"]} The current balance is {COLORS["red"]}€{self.total_salary}M{COLORS["clear"]}.')
-    
+        print(self.lang.balanceInfo(self.total_salary))  
+    # Register renew offer
     def registerRenewal(self, salary:int=0):
         if salary == 0:
             salary = self.transfer_history[-1]["salary"]
@@ -132,13 +136,12 @@ class SoccerPLayer:
         self.total_transfers += 1
         self.age += self.transfer_step
         self.total_salary += salary*self.transfer_step
-        print(f'{COLORS["blue"]}[RENEW]{COLORS["clear"]} {COLORS["green"]}{self.name}{COLORS["clear"]} has renewed his contract with {COLORS["red"]}{self.transfer_history[-1]["team"]}{COLORS["clear"]} at {COLORS["red"]}{self.transfer_history[-1]["year"]}{COLORS["clear"]} for {COLORS["red"]}{salary}M{COLORS["clear"]} per year. You are a loyal player!')
+        print(self.lang.registerRenewal(self.name, self.transfer_history[-1]["team"], self.transfer_history[-1]["year"], salary))
         # Print total salary
-        print(f'{COLORS["yellow"]}[INFO]{COLORS["clear"]} The current balance is {COLORS["red"]}{self.total_salary}M{COLORS["clear"]}.')
+        print(self.lang.balanceInfo(self.total_salary))
     # Return the player's transfer history
     def getTransferHistory(self):
         return self.transfer_history
-    
     # Return the value of the player's salary in millions
     def setTotalSalary(self):
         for transfer in self.transfer_history:
@@ -149,7 +152,8 @@ class SoccerPLayer:
     
 # This class will be used to simulate a career of a soccer player.   
 class CareerSimulator:
-    def __init__(self):
+    def __init__(self, language:str):
+        self.lang = LangPTBR() if language == "PTBR" else LangENUS()
         self.player:SoccerPLayer
         self.gameTitle:str = f"""{COLORS['red']}
   ██████  ▒█████   ▄████▄   ▄████▄  ▓█████  ██▀███        ▄████▄   ▄▄▄       ██▀███  ▓█████ ▓█████  ██▀███         ██████  ██▓ ███▄ ▄███▓
@@ -190,42 +194,42 @@ class CareerSimulator:
         return selector_string
     
     def printSuccessfulSelection(self, selection:str):
-        print(f'{COLORS["yellow"]}[INFO]{ COLORS["clear"]} {COLORS["green"]}{selection}{COLORS["clear"]} has been successfully selected.')
+        print(self.lang.selectionInfo(selection))
     
     def matchPosition(self, position:int):
         match position:
             case 1:
-                position = POSITIONS[0]
+                position = POSITIONS[0] # type: ignore
             case 2:
-                position = POSITIONS[1]
+                position = POSITIONS[1] # type: ignore
             case 3:
-                position = POSITIONS[2]
+                position = POSITIONS[2] # type: ignore
             case 4:
-                position = POSITIONS[3]
+                position = POSITIONS[3] # type: ignore
             case _:
                 raise PositionException
             
     def matchNationalities(self, nationality:int):
         match nationality:
             case 1:
-                nationality = NATIONALITIES[0]
+                nationality = NATIONALITIES[0] # type: ignore
             case 2:
-                nationality = NATIONALITIES[1]
+                nationality = NATIONALITIES[1] # type: ignore
             case 3:
-                nationality = NATIONALITIES[2]
+                nationality = NATIONALITIES[2] # type: ignore
             case 4:
-                nationality = NATIONALITIES[3]
+                nationality = NATIONALITIES[3] # type: ignore
             case 5:
-                nationality = NATIONALITIES[4]
+                nationality = NATIONALITIES[4] # type: ignore
             case _:
                 raise NationalityException
                 
     def matchTransferStep(self, transfer_step:int):
         match transfer_step:
             case 1:
-                transfer_step = TRANSFER_STEPS[0]
+                transfer_step = TRANSFER_STEPS[0] # type: ignore
             case 2:
-                transfer_step = TRANSFER_STEPS[1]
+                transfer_step = TRANSFER_STEPS[1] # type: ignore
             case _:
                 raise TransferStepException
            
@@ -237,34 +241,37 @@ class CareerSimulator:
             transfer_step_string:str = self.printSelection(TRANSFER_STEPS)
             
             # User declarations
-            name:str = str(input("Please, insert the name of your player: \n>>> ")).title()
+            name:str = input(f"{self.lang.input_name}")
+            name = name.title()
             self.printSuccessfulSelection(name)
             
-            number:int = int(input("Please, insert the number of your player: \n>>> "))
-            self.printSuccessfulSelection(number)
+            number:int = int(input(f"{self.lang.number}"))
+            self.printSuccessfulSelection(str(number))
             
-            position:int = int(input(f"Now, choose between the following positions: \n{positions_string}\n>>> "))
+            position:int = int(input(f"{self.lang.position}{positions_string}\n>>> "))
             self.matchPosition(position)
             self.printSuccessfulSelection(POSITIONS[position-1])
             
-            nationality:int = int(input(f"Wow! Nice choice, only two more steps. Choose between the following nationalities:\n{nationality_string} \n>>> "))
+            nationality:int = int(input(f"{self.lang.nationality}{nationality_string} \n>>> "))
             self.matchNationalities(nationality)
             self.printSuccessfulSelection(NATIONALITIES[nationality-1])
             
-            transfer_step = int(input(f"Finally! The last question. Choose between the following transfer steps: \n{transfer_step_string} \n>>> "))
+            transfer_step = int(input(f"{self.lang.transfer_step}{transfer_step_string} \n>>> "))
             self.matchTransferStep(transfer_step)
-            self.printSuccessfulSelection(TRANSFER_STEPS[transfer_step-1])
+            self.printSuccessfulSelection(str(TRANSFER_STEPS[transfer_step-1]))
 
             # Create the player
             self.player = SoccerPLayer(
+                self.lang,
                 name, 
                 number,
-                position,
-                nationality
+                POSITIONS[position-1],
+                NATIONALITIES[nationality-1],
+                TRANSFER_STEPS[transfer_step-1]
             )          
             
         except ValueError:
-            print("[ERROR] Please, insert a valid number, if you inserted a letter, symbol or decimal number, please, try again.")
+            print(self.lang.value_error)
             return False
         except PositionException as e:
             print(e)
@@ -277,7 +284,7 @@ class CareerSimulator:
             return False
 
         else:
-            print(f"{COLORS['yellow']}[INFO]{COLORS['clear']} Your player has been successfully created! Now, we will proceed with the simulation.\n ")
+            print(self.lang.successful)
             print(self.msgGoodLuck)
     
     def simulateTransfer(self):
@@ -311,36 +318,34 @@ class CareerSimulator:
                
             # TODO: Quando fora do prime, baixar o salário de renovação, evitando o viés de alta constante   
             if renewal_offer:
-                
                 renewal_salary = rs.randomSalary(prime, prev_salary, renew=True, offer_value=offer_salary)
-            
-                print(f'{COLORS["red"]}[OFFER]{COLORS["clear"]} {COLORS["green"]}{self.player.name}{COLORS["clear"]} has been offered a contract by {COLORS["red"]}{team}{COLORS["clear"]} at {COLORS["red"]}{year}{COLORS["clear"]} for {COLORS["red"]}{offer_salary}M{COLORS["clear"]} per year. But, the manager of {COLORS["red"]}{self.player.transfer_history[-1]["team"]}{COLORS["clear"]} has offered a renewal of {COLORS["red"]}{renewal_salary}M{COLORS["clear"]} per year. If you want to renew the contract, type {COLORS["red"]}n{COLORS["clear"]}, if you want to accept the offer, type {COLORS["red"]}y{COLORS["clear"]}.')
+    
+                print(self.lang.renewOffer(self.player.name, team, year, offer_salary, self.player.transfer_history[-1]["team"], renewal_salary))
                 opt = str(input(">>> ")).lower()
                 if opt == "n":
-                    print(f"{COLORS['yellow']}[INFO]{COLORS['clear']} {COLORS['green']}{self.player.name}{COLORS['clear']} has rejected the offer. The contract has been renewed.")
+                    print(self.lang.renewOfferOpt(self.player.name, opt="n"))
                     
                     self.player.registerRenewal(renewal_salary)
                 elif opt == "y":
-                    print(f"{COLORS['yellow']}[INFO]{COLORS['clear']} {COLORS['green']}{self.player.name}{COLORS['clear']} has  accepted the offer, so the previous contract has been terminated.")
+                    print(self.lang.renewOfferOpt(self.player.name, opt="y"))
                     self.player.registerTransference(team, year, offer_salary)
                 else:
-                    print(f"{COLORS['yellow']}[INFO]{COLORS['clear']} {COLORS['green']}{self.player.name}{COLORS['clear']} don't answer the offer, so the offer has been rejected. The contract has been renewed.")
+                    print(self.lang.renewOfferOpt(self.player.name, opt=opt))
                     self.player.registerRenewal(renewal_salary)
             else:
-                
-                print(f'{COLORS["red"]}[OFFER]{COLORS["clear"]} {COLORS["green"]}{self.player.name}{COLORS["clear"]} has been offered a contract by {COLORS["red"]}{team}{COLORS["clear"]} at {COLORS["red"]}{year}{COLORS["clear"]} for {COLORS["red"]}{offer_salary}M{COLORS["clear"]} per year. If you want to accept the offer, type {COLORS["red"]}y{COLORS["clear"]}, if you want to reject the offer, type {COLORS["red"]}n{COLORS["clear"]}.')
+                print(self.lang.simpleOffer(self.player.name, team, offer_salary))
                 opt = str(input(">>> ")).lower()
                 
                 if opt == "y":
-                    print(f"{COLORS['yellow']}[INFO]{COLORS['clear']} {COLORS['green']}{self.player.name}{COLORS['clear']} has accepted the offer, so the previous contract has been terminated.")
+                    print(self.lang.simpleOfferOpt(self.player.name, opt="y"))
                     self.player.registerTransference(team, year, offer_salary)
 
                 elif opt == "n":
-                    print(f"{COLORS['yellow']}[INFO]{COLORS['clear']} {COLORS['green']}{self.player.name}{COLORS['clear']} has rejected the offer. The contract has been renewed.")
+                    print(self.lang.simpleOfferOpt(self.player.name, opt="n"))
                     # Renew the contract
                     self.player.registerRenewal(renewal_salary)
                 else:
-                    print(f"{COLORS['yellow']}[INFO]{COLORS['clear']} {COLORS['green']}{self.player.name}{COLORS['clear']} don't answer the offer, so the offer has been rejected. The contract has been renewed.")
+                    print(self.lang.simpleOfferOpt(self.player.name, opt=opt))
                     # Renew the contract
                     self.player.registerRenewal(renewal_salary)
                     

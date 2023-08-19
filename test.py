@@ -12,7 +12,8 @@ class Tests:
             print("[RESOLVED] JSON file loaded successfully.",f"\n JSON RESULT:\n{TEAMS}")
 
     def testGameStart(self):
-        s = CareerSimulator()
+        
+        s = CareerSimulator(language="ENUS")
         print(s.startGame())
 
 t = Tests()

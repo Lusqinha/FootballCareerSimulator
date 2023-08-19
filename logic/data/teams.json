@@ -110,17 +110,17 @@
         "country": "Brazil"
     },
     {
-        "team_name": "Atlético Clube Goianiense",
-        "common_name": "Atlético-GO",
+        "team_name": "Atletico Clube Goianiense",
+        "common_name": "Atletico-GO",
         "country": "Brazil"
     },
     {
-        "team_name": "Clube Atlético Mineiro",
-        "common_name": "Atlético-MG",
+        "team_name": "Clube Atletico Mineiro",
+        "common_name": "Atletico-MG",
         "country": "Brazil"
     },
     {
-        "team_name": "Avaí Futebol Clube",
+        "team_name": "Avai Futebol Clube",
         "common_name": "Avaí",
         "country": "Brazil"
     },
@@ -135,8 +135,8 @@
         "country": "Brazil"
     },
     {
-        "team_name": "Ceará Sporting Club",
-        "common_name": "Ceará",
+        "team_name": "Ceara Sporting Club",
+        "common_name": "Ceara",
         "country": "Brazil"
     },
     {
@@ -150,8 +150,8 @@
         "country": "Brazil"
     },
     {
-        "team_name": "Cuiabá Esporte Clube",
-        "common_name": "Cuiabá",
+        "team_name": "Cuiaba Esporte Clube",
+        "common_name": "Cuiaba",
         "country": "Brazil"
     },
     {
@@ -170,8 +170,8 @@
         "country": "Brazil"
     },
     {
-        "team_name": "Goiás Esporte Clube",
-        "common_name": "Goiás",
+        "team_name": "Goias Esporte Clube",
+        "common_name": "Goias",
         "country": "Brazil"
     },
     {
@@ -195,8 +195,108 @@
         "country": "Brazil"
     },
     {
-        "team_name": "São Paulo Futebol Clube",
-        "common_name": "São Paulo",
+        "team_name": "Sao Paulo Futebol Clube",
+        "common_name": "Sao Paulo",
         "country": "Brazil"
+    },
+    {
+        "team_name": "Atalanta Bergamasca Calcio",
+        "common_name": "Atalanta",
+        "country": "Italy"
+    },
+    {
+        "team_name": "Bologna Football Club 1909",
+        "common_name": "Bologna",
+        "country": "Italy"
+    },
+    {
+        "team_name": "Cagliari Calcio",
+        "common_name": "Cagliari",
+        "country": "Italy"
+    },
+    {
+        "team_name": "Empoli Football Club",
+        "common_name": "Empoli",
+        "country": "Italy"
+    },
+    {
+        "team_name": "ACF Fiorentina",
+        "common_name": "Fiorentina",
+        "country": "Italy"
+    },
+    {
+        "team_name": "Frosinone Calcio",
+        "common_name": "Frosinone",
+        "country": "Italy"
+    },
+    {
+        "team_name": "Genoa Cricket and Football Club",
+        "common_name": "Genoa",
+        "country": "Italy"
+    },
+    {
+        "team_name": "Football Club Internazionale Milano",
+        "common_name": "Inter",
+        "country": "Italy"
+    },
+    {
+        "team_name": "Juventus Football Club",
+        "common_name": "Juventus",
+        "country": "Italy"
+    },
+    {
+        "team_name": "Società Sportiva Lazio",
+        "common_name": "Lazio",
+        "country": "Italy"
+    },
+    {
+        "team_name": "Unione Sportiva Lecce",
+        "common_name": "Lecce",
+        "country": "Italy"
+    },
+    {
+        "team_name": "Associazione Calcio Milan",
+        "common_name": "Milan",
+        "country": "Italy"
+    },
+    {
+        "team_name": "AC Monza",
+        "common_name": "Monza",
+        "country": "Italy"
+    },
+    {
+        "team_name": "Società Sportiva Calcio Napoli",
+        "common_name": "Napoli",
+        "country": "Italy"
+    },
+    {
+        "team_name": "Associazione Sportiva Roma",
+        "common_name": "Roma",
+        "country": "Italy"
+    },
+    {
+        "team_name": "Us Salernitana 1919",
+        "common_name": "Salernitana",
+        "country": "Italy"
+    },
+    {
+        "team_name": "Unione Sportiva Sassuolo Calcio",
+        "common_name": "Sassuolo",
+        "country": "Italy"
+    },
+    {
+        "team_name": "Torino Football Club",
+        "common_name": "Torino",
+        "country": "Italy"
+    },
+    {
+        "team_name": "Udinese Calcio",
+        "common_name": "Udinese",
+        "country": "Italy"
+    },
+    {
+        "team_name": "Hellas Verona Football Club",
+        "common_name": "Hellas Verona",
+        "country": "Italy"
     }
 ]
